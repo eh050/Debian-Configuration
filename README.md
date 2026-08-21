@@ -1,4 +1,4 @@
-I use these aliases for Debian based systems to make my life a lot easier.
+I use these aliases for Debian based systems to make my life a lot easier. Check which shell you are using with `echo $SHELL`
 
 # IF USING BASH
 Create the aliases file:
