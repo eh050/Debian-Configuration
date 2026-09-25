@@ -3,7 +3,7 @@ I use these aliases for Debian based systems to make my life a lot easier. Check
 # IF USING BASH
 Create the aliases file:
 ```bash
-cat << 'EOF' > ~/.bash_aliases
+cat << 'EOF' >> ~/.bash_aliases
 # --- Simple aliases ---
 alias c='clear'
 alias cls='clear; ls'
@@ -88,7 +88,7 @@ EOF
 # IF USING ZSH
 Create the aliases file:
 ```bash
-cat << 'EOF' > ~/.zsh_aliases
+cat << 'EOF' >> ~/.zsh_aliases
 # --- Simple aliases ---
 alias c='clear'
 alias cls='clear; ls'
