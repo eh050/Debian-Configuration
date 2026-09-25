@@ -1,3 +1,20 @@
+# ROS2 Aliases (Debian-based systems)
+
+Check which shell you're using first: `echo $SHELL`
+
+Like the general dotfiles notes, this installer is **non-destructive**:
+each alias/function is checked against your existing `~/.bash_aliases`
+before being added. If it's already defined, it's skipped instead of
+duplicated or overwritten.
+
+> Assumes a colcon workspace at `~/dev_ws`. If yours lives elsewhere,
+> edit the `WS` variable near the top before running.
+
+---
+
+## IF USING BASH
+
+```bash
 ALIAS_FILE="${HOME}/.bash_aliases"
 WS="${HOME}/dev_ws"   # <-- change if your workspace path is different
 touch "$ALIAS_FILE"
@@ -88,3 +105,34 @@ EOF
 fi
 
 echo "Done."
+```
+
+Then link the alias file (only adds the source line if it's not already there):
+
+```bash
+grep -q '.bash_aliases' ~/.bashrc || cat << 'EOF' >> ~/.bashrc
+
+# Load custom aliases and functions
+if [ -f "${HOME}/.bash_aliases" ]; then
+    source "${HOME}/.bash_aliases"
+fi
+EOF
+
+source ~/.bashrc
+```
+
+---
+
+## Notes
+
+- `rebuild` is your original alias, unchanged — full workspace rebuild plus
+  re-source.
+- `cbuild <pkg>` and `colbuild1` both build a single package; `cbuild` is a
+  function so it can take multiple package names, `colbuild1` is the raw
+  alias if you'd rather type the package name yourself.
+- `rosclean` wipes `build/`, `install/`, and `log/` in a workspace — defaults
+  to `$WS`, or pass a path explicitly: `rosclean ~/other_ws`.
+- `killgazebo` / `killros` are blunt (`pkill -9`) — handy when a sim or node
+  hangs, but they'll kill *all* matching processes, not just yours if you're
+  on a shared machine.
+- Re-running this block is safe — only missing aliases/functions get added.
