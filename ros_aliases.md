@@ -3,7 +3,7 @@ I use these aliases for Debian based systems to make my life a lot easier. Check
 # IF USING BASH
 Create the aliases file:
 ```bash
-cat << 'EOF' > ~/.bash_aliases
+cat << 'EOF' >> ~/.bash_aliases
 alias rebuild='cd ~/dev_ws && colcon build --symlink-install && source ~/dev_ws/install/setup.bash'
 EOF
 ```
